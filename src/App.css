@@ -1,38 +1,121 @@
-.App {
+/* styles.css */
+
+/* Basic Page Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Container for Class Selector */
+.class-selector {
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Header Styles */
+.class-selector h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Level Selector Styles */
+.level-selector {
+  margin-bottom: 20px;
+}
+
+.level-selector label {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.level-selector select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.level-selector select:focus {
+  border-color: #4a4e69;
+}
+
+/* Class Card Styles */
+.class-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.class-card h2 {
+  font-size: 1.8rem;
+  color: #4a4e69;
+  margin-bottom: 10px;
+}
+
+.class-card p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Button Styles */
+.class-card button {
+  background-color: #4a4e69;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.class-card button:hover {
+  background-color: #22223b;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .class-selector {
+    width: 95%;
+    padding: 15px;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .class-card {
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .class-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .level-selector label {
+    font-size: 1rem;
   }
 }
