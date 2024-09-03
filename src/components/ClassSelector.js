@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { classes } from './/starsData.js'; 
+import { classes } from './/starsData'; // Ensure this path is correct
 
 const ClassSelector = () => {
-  const [level, setLevel] = useState(1); 
+  const [level, setLevel] = useState(1); // State to track selected level
   const navigate = useNavigate();
 
   const handleSelectClass = (className) => {
@@ -30,19 +30,24 @@ const ClassSelector = () => {
           ))}
         </select>
       </div>
-      {classes && Object.keys(classes).map((className) => (
-        <div className="class-card" key={className}>
-          <h2>{className}</h2>
-          <p>Hit Die: {classes[className].hitDie}</p>
-          <p>Attack Bonus: {classes[className].attackBonus[level - 1]}</p>
-          <p>SAVE: {classes[className].saveProgression[level - 1]}</p>
-          <p>Skill Points: {classes[className].skillPointsPerLevel}</p>
-          <p>
-            Abilities: {classes[className].abilities.length > 0 ? classes[className].abilities.join(', ') : 'None'}
-          </p>
-          <button onClick={() => handleSelectClass(className)}>Select</button>
-        </div>
-      ))}
+      {classes && Object.keys(classes).map((className) => {
+        const classData = classes[className];
+        const totalSkillPoints = classData.skillPointsPerLevel * level; // Calculate total skill points
+
+        return (
+          <div className="class-card" key={className}>
+            <h2>{className}</h2>
+            <p>Hit Die: {classData.hitDie}</p>
+            <p>Attack Bonus: {classData.attackBonus[level - 1]}</p>
+            <p>SAVE: {classData.saveProgression[level - 1]}</p>
+            <p>Skill Points: {totalSkillPoints} (per level {classData.skillPointsPerLevel})</p>
+            <p>
+              Abilities: {classData.abilities.length > 0 ? classData.abilities.join(', ') : 'None'}
+            </p>
+            <button onClick={() => handleSelectClass(className)}>Select</button>
+          </div>
+        );
+      })}
     </div>
   );
 };
